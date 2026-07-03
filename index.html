@@ -94,7 +94,7 @@ html, body {
 }
 .corner-logo svg path {
     stroke: #fff;
-    stroke-width: 5;
+    stroke-width: 5.5;
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: none;
@@ -177,8 +177,8 @@ p {
     text-align: center;
 }
 .premium-logo-box {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     margin-bottom: 50px;
     opacity: 0;
     filter: blur(20px);
@@ -193,7 +193,7 @@ p {
 }
 .premium-logo-box svg path {
     stroke: #fff;
-    stroke-width: 4.5;
+    stroke-width: 5;
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: none;
@@ -406,9 +406,8 @@ p {
 
 <template id="logo-vector-source">
     <svg viewBox="0 0 100 100">
-        <path d="M 50 12 L 85 47 L 50 82 L 15 47 Z" opacity="0.15" stroke-width="2" />
-        <path d="M 50 12 L 80 42 L 50 72 L 32 54 L 68 54 L 50 36 L 20 66 L 50 96" />
-        <circle cx="50" cy="12" r="3" fill="#fff" />
+        <path d="M 25 32 L 75 32" />
+        <path d="M 50 32 L 50 46 C 63 46, 63 64, 50 64 L 50 82" />
     </svg>
 </template>
 
@@ -552,7 +551,7 @@ function adjustAmbientTensionVolume() {
     if (current === 1) targetVolume = 0.04;
     if (current === 2) targetVolume = 0.10;
     if (current === 3) targetVolume = 0.18;
-    if (current === 4) targetVolume = 0.28; /* Peak ambient tension during deep identity fade-in */
+    if (current === 4) targetVolume = 0.28;
     if (current >= 5) targetVolume = 0.01;
     
     masterGain.gain.linearRampToValueAtTime(targetVolume, continuousTime + 0.8);
