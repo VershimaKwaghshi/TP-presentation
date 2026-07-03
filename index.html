@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Take Profit | Discover a New Path</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 html, body {
     width: 100%;
@@ -37,8 +38,6 @@ html, body {
     overflow: hidden;
     background: #000;
 }
-
-/* Background Atmospheric Controls */
 .grid {
     position: absolute;
     top: 0;
@@ -70,8 +69,6 @@ html, body {
     0%, 100% { transform: translate(0, 0) scale(1); }
     50% { transform: translate(-120px, 80px) scale(1.08); }
 }
-
-/* Base Interface Tokens */
 .logo {
     position: absolute;
     top: 55px;
@@ -111,8 +108,6 @@ html, body {
     transition: .75s cubic-bezier(0.76, 0, 0.24, 1);
     z-index: 100;
 }
-
-/* Monolithic Typography Configuration */
 h1 {
     font-size: 104px;
     line-height: 1.05;
@@ -155,8 +150,6 @@ p {
     background: white;
     opacity: .15;
 }
-
-/* Structural Transitions */
 .fade {
     opacity: 0;
     transform: translateY(40px);
@@ -167,11 +160,6 @@ p {
 .slide.active .fade {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Slide 5 Multi-Stage Narrative Bloom */
-.wow-reveal {
-    background: #000 !important;
 }
 .wow-reveal .grid {
     opacity: 0;
@@ -203,17 +191,6 @@ p {
 .slide.active.wow-reveal .quantum-point {
     animation: quantumPulseAndBloom 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.bloom-logo {
-    width: 75px;
-    height: auto;
-    opacity: 0;
-    transform: scale(0.9);
-    filter: blur(12px);
-    margin-bottom: 35px;
-}
-.slide.active.wow-reveal .bloom-logo {
-    animation: componentFadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.9s;
-}
 .bloom-text {
     font-size: 104px;
     font-weight: 800;
@@ -223,6 +200,7 @@ p {
     filter: blur(15px);
     transform: scale(0.95);
     text-shadow: 0 0 60px rgba(255,255,255,0);
+    text-align: center;
 }
 .slide.active.wow-reveal .bloom-text {
     animation: typographyBloomIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.3s;
@@ -237,6 +215,7 @@ p {
     opacity: 0;
     filter: blur(5px);
     transform: translateY(15px);
+    text-align: center;
 }
 .slide.active.wow-reveal .bloom-anchor {
     animation: anchorSlideIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 2.2s;
@@ -249,9 +228,6 @@ p {
     38% { opacity: 0; transform: scale(35); width: 120px; height: 120px; filter: blur(35px); }
     100% { opacity: 0; transform: scale(35); filter: blur(60px); }
 }
-@keyframes componentFadeIn {
-    to { opacity: 0.95; transform: scale(1); filter: blur(0px); }
-}
 @keyframes typographyBloomIn {
     0% { opacity: 0; filter: blur(15px); transform: scale(0.95); text-shadow: 0 0 60px rgba(255,255,255,0.8); }
     35% { opacity: 1; filter: blur(0px); text-shadow: 0 0 35px rgba(255,255,255,0.3); }
@@ -260,8 +236,6 @@ p {
 @keyframes anchorSlideIn {
     to { opacity: 1; filter: blur(0px); transform: translateY(0); }
 }
-
-/* Structural Narrative Canvas Layer */
 #topologyCanvas {
     position: absolute;
     top: 0;
@@ -271,8 +245,6 @@ p {
     z-index: 2;
     pointer-events: none;
 }
-
-/* Sequential Presentation Builders */
 .step-sequence h2 {
     opacity: 0;
     transform: translateY(30px);
@@ -286,8 +258,6 @@ p {
 .step-sequence h2.revealed.current-step {
     opacity: 1;
 }
-
-/* Call to Action Execution Layer */
 .cta {
     margin-top: 50px;
     display: inline-flex;
@@ -301,6 +271,7 @@ p {
     cursor: pointer;
     transition: background .4s cubic-bezier(0.16, 1, 0.3, 1), color .4s cubic-bezier(0.16, 1, 0.3, 1);
     width: max-content;
+    z-index: 20;
 }
 .cta:hover {
     background: white;
@@ -314,16 +285,18 @@ p {
     text-transform: uppercase;
 }
 
-/* Adaptive Form Factor Overrides */
+/* Enhanced Mobile Structural Boundaries */
 @media (max-width: 900px) {
-    .slide { padding: 45px; }
-    .logo { width: 40px; top: 35px; left: 45px; }
-    h1, .bloom-text { font-size: 56px; letter-spacing: -2px; }
-    h2 { font-size: 44px; letter-spacing: -1.5px; }
-    p { font-size: 28px; margin-top: 20px; }
-    .bloom-anchor { font-size: 14px; letter-spacing: 2px; }
-    .slideNumber, .watermark { right: 45px; left: auto; bottom: 35px; }
+    .slide { padding: 35px 25px; }
+    .logo { width: 35px; top: 30px; left: 25px; }
+    h1 { font-size: 42px; letter-spacing: -1.5px; }
+    h2 { font-size: 34px; letter-spacing: -1px; }
+    p { font-size: 22px; margin-top: 20px; }
+    .bloom-text { font-size: 42px; letter-spacing: -2px; }
+    .bloom-anchor { font-size: 13px; letter-spacing: 1px; margin-top: 15px; padding: 0 15px; }
+    .slideNumber { right: 25px; bottom: 30px; font-size: 10px; }
     .watermark { display: none; }
+    .cta { width: 100%; padding: 18px 32px; font-size: 13px; margin-top: 35px; }
 }
 </style>
 </head>
@@ -333,6 +306,7 @@ p {
 
 <div id="slides">
 
+    <!-- Slide 1 -->
     <section class="slide active">
         <div class="grid"></div>
         <div class="glow"></div>
@@ -345,6 +319,7 @@ p {
         <div class="slideNumber">01</div>
     </section>
 
+    <!-- Slide 2 -->
     <section class="slide">
         <div class="grid"></div>
         <div class="fade">
@@ -353,6 +328,7 @@ p {
         <div class="slideNumber">02</div>
     </section>
 
+    <!-- Slide 3 -->
     <section class="slide">
         <div class="grid"></div>
         <div class="fade">
@@ -362,46 +338,44 @@ p {
         <div class="slideNumber">03</div>
     </section>
 
+    <!-- Slide 4 -->
     <section class="slide">
         <div class="grid"></div>
         <canvas id="topologyCanvas"></canvas>
         <div class="slideNumber">04</div>
     </section>
 
+    <!-- Slide 5 -->
     <section class="slide wow-reveal">
         <div class="grid"></div>
         <div class="bloom-container">
             <div class="quantum-point"></div>
-            <img src="logo.png" class="bloom-logo" alt="Take Profit Structural Mark">
             <div class="bloom-text">TAKE PROFIT</div>
             <div class="bloom-anchor">One infrastructure. Multiple opportunities.</div>
         </div>
-        <div class="watermark">TAKE PROFIT</div>
         <div class="slideNumber">05</div>
     </section>
 
+    <!-- Slide 6 -->
     <section class="slide step-sequence" data-steps="3">
         <div class="grid"></div>
-        <img src="logo.png" class="logo" alt="Take Profit Mark">
         <div class="fade">
             <h2 class="seq-step" data-step="1">Markets evolved.</h2>
             <h2 class="seq-step" data-step="2">Trading evolved. Capital never did.</h2>
             <h2 class="seq-step highlight" data-step="3">Until now.</h2>
         </div>
-        <div class="watermark">TAKE PROFIT</div>
         <div class="slideNumber">06</div>
     </section>
 
+    <!-- Slide 7 -->
     <section class="slide">
         <div class="grid"></div>
         <div class="glow"></div>
-        <img src="logo.png" class="logo" alt="Take Profit Mark">
         <div class="fade">
             <h2>The future belongs...<br>to those willing to move first.</h2>
-            <div class="cta" onclick="executeWaitlistRedirect()">RESERVE YOUR PLACE</div>
+            <div class="cta" id="ctaBtn">RESERVE YOUR PLACE</div>
             <div class="footer-brand-signature">Discover a New Path.</div>
         </div>
-        <div class="watermark">TAKE PROFIT</div>
         <div class="slideNumber">07</div>
     </section>
 
@@ -415,52 +389,63 @@ let current = 0;
 let currentInternalStep = 0;
 let locked = false;
 
-/* Multi-Node Ambient and Event Synthesizer Matrix */
 let audioCtx = null;
 let masterOsc = null;
 let masterGain = null;
 
 function initAudio() {
-    if (audioCtx) return;
+    if (audioCtx) {
+        if (audioCtx.state === "suspended") {
+            audioCtx.resume();
+        }
+        return;
+    }
     
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    masterGain = audioCtx.createGain();
-    masterGain.gain.setValueAtTime(0.01, audioCtx.currentTime);
-    masterGain.connect(audioCtx.destination);
-    
-    // Instantiation of the Continuous Subconscious Tension Layer
-    masterOsc = audioCtx.createOscillator();
-    masterOsc.type = "sine";
-    masterOsc.frequency.setValueAtTime(45, audioCtx.currentTime); // Deep structural hum
-    
-    const lowpass = audioCtx.createBiquadFilter();
-    lowpass.type = "lowpass";
-    lowpass.frequency.setValueAtTime(80, audioCtx.currentTime);
-    
-    masterOsc.connect(lowpass);
-    lowpass.connect(masterGain);
-    masterOsc.start(0);
+    try {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+        masterGain.connect(audioCtx.destination);
+        
+        masterOsc = audioCtx.createOscillator();
+        masterOsc.type = "sine";
+        masterOsc.frequency.setValueAtTime(45, audioCtx.currentTime);
+        
+        const lowpass = audioCtx.createBiquadFilter();
+        lowpass.type = "lowpass";
+        lowpass.frequency.setValueAtTime(80, audioCtx.currentTime);
+        
+        masterOsc.connect(lowpass);
+        lowpass.connect(masterGain);
+        masterOsc.start(0);
+        
+        if (audioCtx.state === "suspended") {
+            audioCtx.resume();
+        }
+    } catch (e) {
+        console.log("Audio architecture initialization blocked:", e);
+    }
 }
 
 function adjustAmbientTensionVolume() {
     if (!masterGain || !audioCtx) return;
     const now = audioCtx.currentTime;
     
-    // Increment master atmospheric volume step maps linearly across runtime stages
     let targetVolume = 0.01;
-    if (current === 1) targetVolume = 0.04;
-    if (current === 2) targetVolume = 0.08;
-    if (current === 3) targetVolume = 0.16; // Peak tension on structural canvas slide
-    if (current >= 4) targetVolume = 0.01;  // Drop ambient floor to pass energy to main explosion
+    if (current === 1) targetVolume = 0.05;
+    if (current === 2) targetVolume = 0.12;
+    if (current === 3) targetVolume = 0.22;
+    if (current >= 4) targetVolume = 0.01;
     
     masterGain.gain.linearRampToValueAtTime(targetVolume, now + 0.7);
 }
 
 function triggerCinematicAcousticBloom() {
     if (!audioCtx) return;
+    if (audioCtx.state === "suspended") audioCtx.resume();
+    
     const now = audioCtx.currentTime;
     
-    /* LAYER 1: Deep Impact Sub-Bass Drop */
     const subOsc = audioCtx.createOscillator();
     const subGain = audioCtx.createGain();
     subOsc.type = "sine";
@@ -474,14 +459,13 @@ function triggerCinematicAcousticBloom() {
     subOsc.connect(subGain);
     subGain.connect(audioCtx.destination);
     
-    /* LAYER 2: Mid-Frequency Cinematic Orchestral Swell */
     const swellOsc = audioCtx.createOscillator();
     const swellGain = audioCtx.createGain();
     const swellFilter = audioCtx.createBiquadFilter();
     
     swellOsc.type = "triangle";
     swellOsc.frequency.setValueAtTime(110, now);
-    swellOsc.frequency.linearRampToValueAtTime(146.8, now + 1.4); // Slide up interval
+    swellOsc.frequency.linearRampToValueAtTime(146.8, now + 1.4);
     
     swellFilter.type = "lowpass";
     swellFilter.frequency.setValueAtTime(160, now);
@@ -495,10 +479,7 @@ function triggerCinematicAcousticBloom() {
     swellFilter.connect(swellGain);
     swellGain.connect(audioCtx.destination);
     
-    /* LAYER 3: High-Frequency Crystal Shimmer (Executes at exactly 1300ms text bloom) */
-    const shimmerDelay = 1.3;
-    const shimmerTime = now + shimmerDelay;
-    
+    const shimmerTime = now + 1.3;
     const shimOsc1 = audioCtx.createOscillator();
     const shimOsc2 = audioCtx.createOscillator();
     const shimGain = audioCtx.createGain();
@@ -509,7 +490,7 @@ function triggerCinematicAcousticBloom() {
     shimOsc1.frequency.exponentialRampToValueAtTime(1400, shimmerTime + 0.45);
     
     shimOsc2.type = "sine";
-    shimOsc2.frequency.setValueAtTime(3200, shimmerTime); // Harmonically separated frequency pair
+    shimOsc2.frequency.setValueAtTime(3200, shimmerTime);
     shimOsc2.frequency.exponentialRampToValueAtTime(1800, shimmerTime + 0.45);
     
     shimFilter.type = "highpass";
@@ -525,14 +506,12 @@ function triggerCinematicAcousticBloom() {
     shimFilter.connect(shimGain);
     shimGain.connect(audioCtx.destination);
     
-    // Core Synthesis Triggers
     subOsc.start(now); subOsc.stop(now + 2.8);
     swellOsc.start(now); swellOsc.stop(now + 1.7);
     shimOsc1.start(shimmerTime); shimOsc1.stop(shimmerTime + 0.6);
     shimOsc2.start(shimmerTime); shimOsc2.stop(shimmerTime + 0.6);
 }
 
-/* Narrative-Driven System Convergence Canvas Topology Engine */
 const canvas = document.getElementById("topologyCanvas");
 const ctx = canvas.getContext("2d");
 let nodes = [];
@@ -550,55 +529,50 @@ resizeCanvas();
 function buildNarrativeTopology() {
     nodes = [];
     particles = [];
-    const peripheralCount = 27; // 9 nodes per industry silo cluster
+    const peripheralCount = 27;
     
-    // 1. Establish Peripheral Isolated Spatial Ecosystem Clusters
     for (let i = 0; i < peripheralCount; i++) {
         let clusterID = Math.floor(i / 9);
         let centerX, centerY;
         
-        if (clusterID === 0) { // Brokers Cluster
-            centerX = canvas.width * 0.20; centerY = canvas.height * 0.40;
-        } else if (clusterID === 1) { // Prop Firms Cluster
-            centerX = canvas.width * 0.80; centerY = canvas.height * 0.30;
-        } else { // Retail Traders Cluster
-            centerX = canvas.width * 0.50; centerY = canvas.height * 0.80;
+        if (clusterID === 0) {
+            centerX = canvas.width * 0.20; centerY = canvas.height * 0.35;
+        } else if (clusterID === 1) {
+            centerX = canvas.width * 0.80; centerY = canvas.height * 0.35;
+        } else {
+            centerX = canvas.width * 0.50; centerY = canvas.height * 0.75;
         }
         
-        let nodeX = centerX + (Math.random() - 0.5) * 140;
-        let nodeY = centerY + (Math.random() - 0.5) * 140;
+        let nodeX = centerX + (Math.random() - 0.5) * (canvas.width > 900 ? 140 : 70);
+        let nodeY = centerY + (Math.random() - 0.5) * (canvas.width > 900 ? 140 : 70);
         
         nodes.push({
             x: nodeX, y: nodeY,
             originX: nodeX, originY: nodeY,
-            targetX: nodeX, targetY: nodeY,
             vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
             radius: Math.random() * 2 + 1.5,
             type: "peripheral", cluster: clusterID
         });
     }
     
-    // 2. Build the Central Core Nucleus Arrays (Take Profit Integration Point)
     const coreCount = 6;
     for (let i = 0; i < coreCount; i++) {
-        let coreX = canvas.width * 0.50 + (Math.random() - 0.5) * 80;
-        let coreY = canvas.height * 0.45 + (Math.random() - 0.5) * 80;
+        let coreX = canvas.width * 0.50 + (Math.random() - 0.5) * 40;
+        let coreY = canvas.height * 0.40 + (Math.random() - 0.5) * 40;
         nodes.push({
             x: coreX, y: coreY,
             originX: coreX, originY: coreY,
-            targetX: coreX, targetY: coreY,
             vx: (Math.random() - 0.5) * 0.15, vy: (Math.random() - 0.15) * 0.15,
             radius: 3.5, type: "core", cluster: 99
         });
     }
     
-    // 3. Initialize Conveyance Particle Pipelines
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 40; i++) {
         let pNode = Math.floor(Math.random() * peripheralCount);
         let cNode = peripheralCount + Math.floor(Math.random() * coreCount);
         particles.push({
             from: pNode, to: cNode, progress: Math.random(),
-            speed: Math.random() * 0.004 + 0.002, active: false
+            speed: Math.random() * 0.004 + 0.003, active: false
         });
     }
 }
@@ -607,17 +581,14 @@ function animateNarrativeTopology() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const elapsed = (Date.now() - slide4StartTime) / 1000;
     
-    // Strategic Progression Mapping Phases: 
-    // 0s to 1.8s: Fragmented Isolation. 1.8s to 5s: Structural Unification Bridge.
     let convergenceFactor = 0;
-    if (elapsed > 1.8) {
-        convergenceFactor = Math.min(1, (elapsed - 1.8) / 3.2);
+    if (elapsed > 1.2) {
+        convergenceFactor = Math.min(1, (elapsed - 1.2) / 2.8);
     }
     
-    // Coordinate delta shift updates
     nodes.forEach(node => {
         node.x += node.vx; node.y += node.vy;
-        let bounds = 60;
+        let bounds = 30;
         if (Math.abs(node.x - node.originX) > bounds) node.vx *= -1;
         if (Math.abs(node.y - node.originY) > bounds) node.vy *= -1;
         
@@ -625,36 +596,33 @@ function animateNarrativeTopology() {
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         
         if (node.type === "core") {
-            ctx.fillStyle = `rgba(255, 255, 255, ${convergenceFactor * 0.85})`; // Nucleus fades into visibility
+            ctx.fillStyle = `rgba(255, 255, 255, ${convergenceFactor * 0.85})`;
         } else {
             ctx.fillStyle = "rgba(255, 255, 255, 0.25)";
         }
         ctx.fill();
     });
     
-    // Draw System Interconnections
     ctx.lineWidth = 0.5;
     for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
             let n1 = nodes[i]; let n2 = nodes[j];
             
-            // Phase 1 Local intra-cluster linkage mapping
             if (n1.cluster === n2.cluster && n1.cluster !== 99) {
                 let dist = Math.hypot(n1.x - n2.x, n1.y - n2.y);
-                if (dist < 110) {
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - dist/110) * 0.09})`;
+                if (dist < 90) {
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - dist/90) * 0.09})`;
                     ctx.beginPath(); ctx.moveTo(n1.x, n1.y); ctx.lineTo(n2.x, n2.y); ctx.stroke();
                 }
             }
             
-            // Phase 2 Central convergence structural bridge mapping
             if (convergenceFactor > 0.05) {
                 if ((n1.type === "core" && n2.type === "peripheral") || (n2.type === "core" && n1.type === "peripheral")) {
                     let dist = Math.hypot(n1.x - n2.x, n1.y - n2.y);
-                    let maximumStructuralReach = convergenceFactor * 450;
+                    let maximumStructuralReach = convergenceFactor * 400;
                     
                     if (dist < maximumStructuralReach) {
-                        let linkAlpha = (1 - dist / 450) * 0.06 * convergenceFactor;
+                        let linkAlpha = (1 - dist / 400) * 0.07 * convergenceFactor;
                         ctx.strokeStyle = `rgba(255, 255, 255, ${linkAlpha})`;
                         ctx.beginPath(); ctx.moveTo(n1.x, n1.y); ctx.lineTo(n2.x, n2.y); ctx.stroke();
                     }
@@ -663,7 +631,6 @@ function animateNarrativeTopology() {
         }
     }
     
-    // Particle transport orchestration loops
     particles.forEach(p => {
         if (convergenceFactor > 0.1) p.active = true;
         if (!p.active) return;
@@ -671,7 +638,6 @@ function animateNarrativeTopology() {
         p.progress += p.speed;
         if (p.progress >= 1) {
             p.progress = 0;
-            // Alternates routing directions to mimic bi-directional liquidity pipelines
             if (Math.random() > 0.5) {
                 p.from = Math.floor(Math.random() * 27);
                 p.to = 27 + Math.floor(Math.random() * 6);
@@ -689,9 +655,7 @@ function animateNarrativeTopology() {
             ctx.beginPath();
             ctx.arc(currentX, currentY, 1.8, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(255, 255, 255, ${convergenceFactor * 0.9})`;
-            ctx.shadowBlur = 6; ctx.shadowColor = "#fff";
             ctx.fill();
-            ctx.shadowBlur = 0;
         }
     });
     
@@ -704,9 +668,10 @@ function update() {
     slides[current].classList.add("active");
     progress.style.width = ((current + 1) / slides.length * 100) + "%";
     
-    adjustAmbientTensionVolume();
+    if (audioCtx) {
+        adjustAmbientTensionVolume();
+    }
     
-    // Slide 4 Canvas Life Cycle Loops
     if (current === 3) {
         if (!animationFrameId) {
             slide4StartTime = Date.now();
@@ -720,12 +685,10 @@ function update() {
         }
     }
     
-    // Slide 5 Synthesis Drop Check
     if (current === 4) {
         triggerCinematicAcousticBloom();
     }
     
-    // Keynote Step Build Validation Processes
     if (slides[current].classList.contains("step-sequence")) {
         manageSteps();
     } else {
@@ -762,7 +725,7 @@ function next() {
             locked = true;
             currentInternalStep++;
             manageSteps();
-            setTimeout(() => locked = false, 400);
+            setTimeout(() => locked = false, 200);
             return;
         }
     }
@@ -772,7 +735,7 @@ function next() {
     current++;
     currentInternalStep = 0;
     update();
-    setTimeout(() => locked = false, 900);
+    setTimeout(() => locked = false, 500);
 }
 
 function previous() {
@@ -784,7 +747,7 @@ function previous() {
             locked = true;
             currentInternalStep--;
             manageSteps();
-            setTimeout(() => locked = false, 400);
+            setTimeout(() => locked = false, 200);
             return;
         }
     }
@@ -800,10 +763,9 @@ function previous() {
     }
     
     update();
-    setTimeout(() => locked = false, 900);
+    setTimeout(() => locked = false, 500);
 }
 
-/* Operational Input Routers */
 document.addEventListener("keydown", e => {
     if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
         if (e.key === " ") e.preventDefault();
@@ -812,39 +774,47 @@ document.addEventListener("keydown", e => {
     if (e.key === "ArrowLeft" || e.key === "PageUp") {
         previous();
     }
-    if (e.key === "f" || e.key === "F") {
-        toggleFullscreen();
-    }
 });
 
 let startX = 0;
-document.addEventListener("touchstart", e => { startX = e.touches[0].clientX; });
+let touchMoved = false;
+document.addEventListener("touchstart", e => { 
+    startX = e.touches[0].clientX; 
+    touchMoved = false;
+});
+document.addEventListener("touchmove", e => {
+    touchMoved = true;
+});
 document.addEventListener("touchend", e => {
+    if (e.target.id === "ctaBtn") return;
+    
+    if (!touchMoved) {
+        next();
+        return;
+    }
     const endX = e.changedTouches[0].clientX;
-    if (endX < startX - 60) next();
-    if (endX > startX + 60) previous();
+    if (endX < startX - 50) next();
+    if (endX > startX + 50) previous();
+});
+
+document.addEventListener("click", e => {
+    if (window.innerWidth > 900) return; 
+    if (e.target.id === "ctaBtn") return;
+    next();
 });
 
 let wheelLock = false;
 window.addEventListener("wheel", e => {
     if (wheelLock) return;
     wheelLock = true;
-    setTimeout(() => wheelLock = false, 950);
+    setTimeout(() => wheelLock = false, 600);
     if (e.deltaY > 0) next(); else previous();
 });
 
-function toggleFullscreen() {
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {});
-    } else {
-        document.exitFullscreen();
-    }
-}
-document.body.addEventListener("dblclick", toggleFullscreen);
-
-function executeWaitlistRedirect() {
-    alert("System Notification\n\nDirecting user credentials and access state to the secured structural waitlist onboarding sequence.");
-}
+document.getElementById("ctaBtn").addEventListener("click", e => {
+    e.stopPropagation();
+    alert("System Onboarding Sequence Activated.");
+});
 
 update();
 </script>
