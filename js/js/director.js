@@ -1,38 +1,24 @@
-export class Director {
+Dear Axi Partnerships Team,
 
-    constructor(world, rhythm) {
+My name is Dr. Vershima Kwaghshi.
 
-        this.world = world;
-        this.rhythm = rhythm;
+I am the founder of Take Profit (TP), a platform designed to address two persistent challenges facing brokerage firms:
 
-        this.started = false;
+• Customer acquisition
+• Long-term trader retention
 
-        this.fade = 0;
+Our model is also designed to reduce permanent trader losses, creating stronger incentives for traders to remain active while generating sustainable trading volume for partner brokers.
 
-        this.world.start();
+We believe this approach could create meaningful commercial value for Axi, and I would appreciate the opportunity to present the partnership model to the appropriate member of your team.
 
-        this.started = true;
+Please let me know a convenient time for a brief introductory meeting or who I should speak with directly.
 
-    }
+Kind regards,
 
-    update(delta) {
+Dr. Vershima Kwaghshi
 
-        if (!this.started) return;
+Founder, Take Profit
 
-        this.fade += delta;
+Phone:
 
-        const glow = 0.65 + Math.sin(this.fade * 0.7) * 0.08;
-
-        this.world.scene.style.opacity = glow;
-
-        this.world.scene.style.transition =
-            "opacity 1200ms ease, transform 1600ms cubic-bezier(.22,1,.36,1), filter 1600ms ease";
-
-        const scale = 1 + Math.sin(this.fade * 0.25) * 0.006;
-
-        this.world.scene.style.transform =
-            `translateY(0px) scale(${scale})`;
-
-    }
-
-}
+Location: Nigeria
