@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAKE PROFIT | Cinematic Experience</title>
-    <link rel="stylesheet" href="css/main.css">
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
-            "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js"
-        }
-    }
-    </script>
+
+    <title>Take Profit</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div id="experience-canvas-container"></div>
-    <div id="ui-layer"></div>
+
+    <canvas id="world"></canvas>
+
+    <div id="overlay">
+
+        <div id="scene"></div>
+
+        <div id="hint">
+            Tap anywhere
+        </div>
+
+    </div>
+
+    <audio id="ambient" loop>
+        <source src="assets/audio/ambient.mp3" type="audio/mpeg">
+    </audio>
+
     <script type="module" src="js/app.js"></script>
+
 </body>
 </html>
