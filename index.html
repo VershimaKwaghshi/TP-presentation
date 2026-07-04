@@ -60,50 +60,21 @@
             pointer-events: auto;
         }
 
-        .huge-text {
-            font-size: 8rem;
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            margin-bottom: 2rem;
-            line-height: 1.1;
-        }
-
         .narrative-text {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 400;
             line-height: 1.4;
             color: var(--text-color);
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
         }
 
         .sub-narrative {
             font-size: 1.8rem;
             color: var(--accent-color);
-            margin-top: 1.5rem;
+            margin-top: 2rem;
             line-height: 1.5;
         }
 
-        /* Split Visuals for Scene 4 */
-        .split-frame {
-            display: flex;
-            width: 100vw;
-            height: 100vh;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        .split-left, .split-right {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3rem;
-            font-weight: 600;
-        }
-        .split-left { background-color: #000000; color: #ffffff; }
-        .split-right { background-color: #ffffff; color: #000000; }
-
-        /* Navigation controls over video */
         .keynote-controls {
             position: absolute;
             bottom: 40px;
@@ -113,7 +84,7 @@
 
         .skip-btn {
             background: none;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: var(--text-color);
             padding: 12px 24px;
             border-radius: 20px;
@@ -127,7 +98,7 @@
             color: #000000;
         }
 
-        /* Live Platform Landing Page Layer */
+        /* Platform Landing Page Layer */
         #landing-container {
             display: none;
             opacity: 0;
@@ -165,13 +136,13 @@
 
         .hero-section {
             max-width: 1000px;
-            margin: 100px auto var(--text-color);
+            margin: 100px auto 0 auto;
             padding: 0 40px;
             text-align: center;
         }
 
         .hero-title {
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: 700;
             letter-spacing: -0.03em;
             line-height: 1.1;
@@ -179,11 +150,11 @@
         }
 
         .hero-subtitle {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--accent-color);
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 40px auto;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .cta-box {
@@ -206,7 +177,6 @@
             transform: scale(1.02);
         }
 
-        /* Features Matrix Section */
         .grid-section {
             max-width: 1200px;
             margin: 120px auto 0 auto;
@@ -233,9 +203,8 @@
             .architecture-grid {
                 grid-template-columns: 1fr;
             }
-            .huge-text { font-size: 4rem; }
-            .narrative-text { font-size: 1.6rem; }
-            .hero-title { font-size: 3rem; }
+            .narrative-text { font-size: 1.8rem; }
+            .hero-title { font-size: 2.8rem; }
         }
 
         .grid-card {
@@ -246,7 +215,7 @@
         }
 
         .card-title {
-            font-size: 2rem;
+            font-size: 2fr;
             font-weight: 600;
             margin-bottom: 20px;
             letter-spacing: -0.02em;
@@ -258,7 +227,6 @@
             color: #e5e5ea;
         }
 
-        /* Interactive Calculator Area */
         .calculator-container {
             background-color: #1c1c1e;
             border-radius: 24px;
@@ -343,70 +311,59 @@
 </head>
 <body>
 
-    <!-- Cinematic Keynote Deck Framework -->
+    <!-- Cinematic Presentation Framework -->
     <div id="keynote-container">
         <div class="keynote-controls">
             <button class="skip-btn" onclick="revealLandingPage()">Skip to Platform</button>
         </div>
 
-        <!-- Slide 1: Raw Statistics -->
+        <!-- Scene 1: Discovery -->
         <div class="slide" id="slide-1">
-            <div class="huge-text">95%</div>
-            <div class="narrative-text">Ninety five percent of retail traders lose their capital within ninety days.</div>
+            <div class="narrative-text">Every day. Someone discovers trading.</div>
         </div>
 
-        <!-- Slide 2: The Human Variable -->
+        <!-- Scene 2: The Dream -->
         <div class="slide" id="slide-2">
-            <div class="narrative-text">The industry blames bad strategies. The industry blames market volatility. The industry blames lack of education.</div>
-            <div class="sub-narrative">The industry is wrong. The real destroyer is human biology.</div>
+            <div class="narrative-text">People dream.</div>
         </div>
 
-        <!-- Slide 3: The Hidden Problem -->
+        <!-- Scene 3: The Disappearance -->
         <div class="slide" id="slide-3">
-            <div class="narrative-text">Fear makes people exit winning trades too early. Greed makes people hold losing trades too long. You cannot fix the financial system by changing the strategy.</div>
-            <div class="sub-narrative">You must remove the human element from the operational controls entirely.</div>
+            <div class="narrative-text">Millions entered the markets with hope. Most never came back.</div>
         </div>
 
-        <!-- Slide 4: Separation of Roles (Split Visual) -->
-        <div class="slide" id="slide-4" style="width:100%; max-width:100%;">
-            <div class="split-frame">
-                <div class="split-left">The Capital Owner</div>
-                <div class="split-right">The Execution Specialist</div>
-            </div>
+        <!-- Scene 4: The Unseen Adversary -->
+        <div class="slide" id="slide-4">
+            <div class="narrative-text">Markets reward discipline. Humans struggle to remain disciplined under pressure.</div>
+            <div class="sub-narrative">The market did not defeat them. Emotion did.</div>
         </div>
 
-        <!-- Slide 5: The Infrastructure Solution -->
+        <!-- Scene 5: The Pivot Question -->
         <div class="slide" id="slide-5">
-            <div class="narrative-text" style="font-weight: 600;">Take Profit is the global rule enforcement engine for capital.</div>
-            <div class="sub-narrative">We separated the asset from the trader. We blinded the manager from the identity of the wealth owner. We replaced human emotion with automated mathematical rules.</div>
+            <div class="narrative-text" style="font-weight: 500;">What if emotion never touched the capital?</div>
         </div>
 
-        <!-- Slide 6: One Destination -->
+        <!-- Scene 6: The Reveal -->
         <div class="slide" id="slide-6">
-            <div class="narrative-text">Every person begins from a different place. Some people have time. Other people need speed.</div>
-            <div class="sub-narrative">Take Profit was designed to support both journeys.</div>
+            <div class="narrative-text" style="font-weight: 700; font-size: 4rem;">Take Profit.</div>
+            <div class="sub-narrative" style="color: #ffffff; font-size: 2rem;">A different way to participate in financial markets.</div>
         </div>
 
-        <!-- Slide 7: Option A Blueprint -->
+        <!-- Scene 7: Protecting Participation -->
         <div class="slide" id="slide-7">
-            <div class="narrative-text">You build. The network accelerates.</div>
-            <div class="sub-narrative">Under Option A, your capital begins working long before your journey is complete. Discipline creates opportunity.</div>
+            <div class="narrative-text">People leave financial markets forever after one catastrophic loss. We believe a single mistake should not end your journey.</div>
+            <div class="sub-narrative">Take Profit exists to protect your right to stay in the game.</div>
         </div>
 
-        <!-- Slide 8: Option B Transition -->
+        <!-- Scene 8: The Return Resolution -->
         <div class="slide" id="slide-8">
-            <div class="narrative-text">Sometimes, waiting is not an option.</div>
-            <div class="sub-narrative">Option B connects your target needs directly to decentralized facilitators and community bonders. Your capital keeps working. Your life keeps moving.</div>
-        </div>
-
-        <!-- Slide 9: End Statement -->
-        <div class="slide" id="slide-9">
-            <div class="narrative-text" style="margin-bottom: 40px;">Take Profit never provides the money. It simply connects the people who choose to.</div>
-            <button class="primary-cta" onclick="revealLandingPage()" style="cursor: pointer;">Request Invitation</button>
+            <div class="narrative-text" style="font-size: 2.2rem; margin-bottom: 20px;">Discover a new path. You can now earn.</div>
+            <div class="sub-narrative" style="color: #ffffff; font-size: 2.2rem; margin-bottom: 40px;">Losses are part of trading. Permanent losses may not be.</div>
+            <button class="primary-cta" onclick="revealLandingPage()" style="cursor: pointer; border: none;">Request Invitation</button>
         </div>
     </div>
 
-    <!-- Live Infrastructure Landing Page -->
+    <!-- Live Platform Landing Page Layer -->
     <div id="landing-container">
         <header>
             <div class="logo">TAKE PROFIT</div>
@@ -414,31 +371,31 @@
         </header>
 
         <section class="hero-section">
-            <h1 class="hero-title">Algorithmic Rule Enforcement Infrastructure</h1>
-            <p class="hero-subtitle">A neutral software layer sitting between participants, managers, and regulated global brokerages to eliminate systemic emotional risk.</p>
+            <h1 class="hero-title">Protecting Financial Market Participation</h1>
+            <p class="hero-subtitle">A neutral rule enforcement platform sitting between wealth owners, execution specialists, and regulated partner brokerages to eliminate systemic emotional loss.</p>
             <div class="cta-box" id="waitlist">
-                <a href="#" class="primary-cta" onclick="alert('Invitation request logged securely via Digital Passport framework.')">Request System Invitation</a>
+                <a href="#" class="primary-cta" onclick="alert('Invitation request logged securely via Digital Passport framework.')" style="border: none;">Request System Invitation</a>
             </div>
         </section>
 
-        <!-- Structural Architecture Overview -->
+        <!-- Architecture Overview Grid -->
         <section class="grid-section">
-            <div class="section-label">Core Architecture</div>
+            <div class="section-label">Platform Architecture</div>
             <div class="architecture-grid">
                 <div class="grid-card">
                     <h3 class="card-title">The Anonymity Engine</h3>
-                    <p class="card-body">The infrastructure completely strips physical identities away from execution streams. Managers can only view raw mathematical performance counters and abstract numeric tokens. This complete blindness prevents collusion and personal emotional pressure, locking execution choices to pure statistics.</p>
+                    <p class="card-body">The platform completely separates physical identities from execution streams. Managers can only view raw performance numbers and abstract numeric tokens. This complete blindness prevents collusion and personal emotional pressure, locking execution choices to pure statistics.</p>
                 </div>
                 <div class="grid-card">
-                    <h3 class="card-title">Real-Time Drawdown Tracking</h3>
-                    <p class="card-body">Floating account equity balances are continually matched against historical peak values at the server level. The absolute moment the protection boundary is crossed, the system initiates microsecond isolation protocols to drop positions and sever active management paths instantly.</p>
+                    <h3 class="card-title">Real Time Balance Protection</h3>
+                    <p class="card-body">Account balances are continually matched against historical peak values. The exact moment the protection boundary is crossed, the system initiates isolation protocols to cut active management paths instantly.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Pipeline Calculators -->
+        <!-- Interactive Core Matrix -->
         <section class="grid-section">
-            <div class="section-label">Interactive Infrastructure Matrix</div>
+            <div class="section-label">Interactive Pathways</div>
             <div class="calculator-container">
                 <div class="calc-tabs">
                     <button class="calc-tab active" onclick="switchTab('opt-a')">Capital Pathway Option A</button>
@@ -449,7 +406,7 @@
                 <div id="calc-opt-a" class="calc-interface active">
                     <div class="input-group">
                         <label>Target Account Scale Goal ($)</label>
-                        <input type="number" id="opt-a-target" value="10000" oninput="calculateOptionA()">
+                        <input type="number" id="opt-a-target" value="10000">
                     </div>
                     <div class="calc-metrics">
                         <div class="metric-row"><span>Liquidity Queue Window Opens</span><strong>Day 11</strong></div>
@@ -473,13 +430,13 @@
             </div>
         </section>
 
-        <!-- Restitution & Revenue Parameters -->
+        <!-- System Governance Metrics -->
         <section class="grid-section">
-            <div class="section-label">System Continuity and Governance</div>
+            <div class="section-label">Ecosystem Continuity</div>
             <div class="architecture-grid">
                 <div class="grid-card">
                     <h3 class="card-title">Chronological Restitution Channels</h3>
-                    <p class="card-body">Account recovery does not require fresh user cash injections. Accounts hit by manager drawdown breaches pass into a strict first-come, first-served queue fueled by accumulated network infrastructure fees. Continuous account status requires a dashboard authentication check every twenty-five days.</p>
+                    <p class="card-body">Account recovery does not require fresh user cash deposits. Accounts hit by manager drawdowns pass into a strict first come first served queue fueled by accumulated network infrastructure fees. Continuous account status requires a dashboard login check every twenty five days.</p>
                 </div>
                 <div class="grid-card">
                     <h3 class="card-title">The Referral Value Exchange</h3>
@@ -490,10 +447,10 @@
     </div>
 
     <script>
-        // Cinematic Playback Controller
+        // Cinematic Playback Controller Logic
         const slides = document.querySelectorAll('.slide');
         let currentSlideIndex = 0;
-        const slideTimings = [4000, 5000, 6000, 4000, 6000, 5000, 6000, 6000, 10000];
+        const slideTimings = [4500, 4000, 6000, 6500, 6000, 5500, 7000, 12000];
         let playbackTimeout;
 
         function playSlides() {
@@ -526,14 +483,11 @@
             }, 1500);
         }
 
-        // Initialize presentation on load
         window.onload = () => {
             playSlides();
-            calculateOptionA();
             calculateOptionB();
         };
 
-        // Landing Page Interactive Calculator Logic
         function switchTab(tabId) {
             document.querySelectorAll('.calc-tab').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.calc-interface').forEach(view => view.classList.remove('active'));
@@ -545,11 +499,6 @@
                 document.querySelectorAll('.calc-tab')[1].classList.add('active');
                 document.getElementById('calc-opt-b').classList.add('active');
             }
-        }
-
-        function calculateOptionA() {
-            let target = parseFloat(document.getElementById('opt-a-target').value) || 0;
-            // Calculations match our rules dynamically without displaying cluttered legal prose
         }
 
         function calculateOptionB() {
