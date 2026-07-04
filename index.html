@@ -1,33 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Take Profit</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="css/style.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Take Profit</title>
+
+<link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
-    <canvas id="world"></canvas>
+<canvas id="world"></canvas>
 
-    <div id="overlay">
+<div id="vignette"></div>
 
-        <div id="scene"></div>
+<div id="grain"></div>
 
-        <div id="hint">
-            Tap anywhere
-        </div>
+<div id="overlay">
+
+    <div id="scene" class="hero"></div>
+
+    <div id="hint">
+
+        TAP ANYWHERE
 
     </div>
 
-    <audio id="ambient" loop>
-        <source src="assets/audio/ambient.mp3" type="audio/mpeg">
-    </audio>
+</div>
 
-    <script type="module" src="js/app.js"></script>
+<audio id="ambient" loop preload="auto">
+
+    <source src="assets/audio/ambient.mp3" type="audio/mpeg">
+
+</audio>
+
+<script type="module" src="js/app.js"></script>
+
+<script>
+
+const hint=document.getElementById("hint");
+
+let hidden=false;
+
+document.body.addEventListener("pointerdown",()=>{
+
+    if(hidden) return;
+
+    hidden=true;
+
+    hint.style.opacity="0";
+
+});
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        hint.style.opacity=".65";
+
+    },1800);
+
+});
+
+</script>
 
 </body>
+
 </html>
