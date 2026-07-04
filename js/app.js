@@ -8,11 +8,21 @@ class App {
 
         this.lastFrame = performance.now();
 
-        this.engine.start();
+        this.started = false;
 
         this.animate();
 
         document.body.addEventListener("pointerdown", () => {
+
+            if (!this.started) {
+
+                this.started = true;
+
+                this.engine.start();
+
+                return;
+
+            }
 
             this.engine.next();
 
