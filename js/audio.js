@@ -12,6 +12,8 @@ export class AudioEngine {
 
         this.enabled = false;
 
+        this.speed = 0.001;
+
     }
 
     start() {
@@ -64,11 +66,15 @@ export class AudioEngine {
 
         this.targetVolume = 0.30;
 
+        this.fadeIn(4);
+
     }
 
     chapterTwo() {
 
         this.targetVolume = 0.18;
+
+        this.fadeIn(4);
 
     }
 
