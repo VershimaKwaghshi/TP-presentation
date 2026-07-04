@@ -4,6 +4,9 @@ import { Camera } from "./camera.js";
 import { Atmosphere } from "./atmosphere.js";
 import { AudioEngine } from "./audio.js";
 import { ChapterTwo } from "./chapterTwo.js";
+import { Lighting } from "./lighting.js";
+import { FilmGrain } from "./filmGrain.js";
+import { Bloom } from "./bloom.js";
 
 export class Engine {
 
@@ -14,6 +17,12 @@ export class Engine {
         this.camera = new Camera();
 
         this.atmosphere = new Atmosphere();
+
+        this.lighting = new Lighting();
+
+        this.filmGrain = new FilmGrain();
+
+        this.bloom = new Bloom();
 
         this.audio = new AudioEngine();
 
@@ -69,6 +78,12 @@ export class Engine {
 
         }
 
+        if(moment.world){
+
+            this.lighting.setMood(moment.world);
+
+        }
+
         this.typography.show(
 
             moment.text,
@@ -79,11 +94,9 @@ export class Engine {
 
     }
 
-    next() {
+    next(){
 
         if(!this.running) return;
-
-        if(!this.readyForNext) return;
 
         this.current++;
 
@@ -91,11 +104,17 @@ export class Engine {
 
     }
 
-    update(delta) {
+    update(delta){
 
         this.camera.update(delta);
 
         this.atmosphere.update(delta);
+
+        this.lighting.update(delta);
+
+        this.bloom.update(delta);
+
+        this.filmGrain.update(delta);
 
         this.audio.update(delta);
 
