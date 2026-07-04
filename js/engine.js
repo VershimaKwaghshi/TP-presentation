@@ -1,20 +1,11 @@
 import { Timeline } from "./timeline.js";
 import { Typography } from "./typography.js";
-import { Camera } from "./camera.js";
-import { Atmosphere } from "./atmosphere.js";
-import { AudioEngine } from "./audio.js";
 
 export class Engine {
 
     constructor() {
 
         this.typography = new Typography();
-
-        this.camera = new Camera();
-
-        this.atmosphere = new Atmosphere();
-
-        this.audio = new AudioEngine();
 
         this.timeline = Timeline;
 
@@ -25,10 +16,6 @@ export class Engine {
     }
 
     start() {
-
-        this.audio.start();
-
-        this.audio.chapterOne();
 
         this.running = true;
 
@@ -45,16 +32,6 @@ export class Engine {
         }
 
         const moment = this.timeline[this.current];
-
-        if (moment.camera) {
-
-            if (typeof this.camera[moment.camera] === "function") {
-
-                this.camera[moment.camera]();
-
-            }
-
-        }
 
         this.typography.show(
 
@@ -77,12 +54,6 @@ export class Engine {
     }
 
     update(delta) {
-
-        this.camera.update(delta);
-
-        this.atmosphere.update(delta);
-
-        this.audio.update(delta);
 
     }
 
