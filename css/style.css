@@ -1,15 +1,7 @@
-:root{
-
-    --pulse:.15;
-
-}
-
 *{
-
     margin:0;
     padding:0;
     box-sizing:border-box;
-
 }
 
 html,
@@ -18,97 +10,119 @@ body{
     width:100%;
     height:100%;
     overflow:hidden;
+
     background:#000;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+
+    color:#ffffff;
+
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
 
 }
 
 body{
 
     background:
-    radial-gradient(circle at center,#191919 0%,#090909 45%,#000 100%);
+    radial-gradient(circle at center,#151515 0%,#080808 45%,#000000 100%);
 
 }
 
 #world{
 
     position:fixed;
+
     inset:0;
+
     width:100%;
+
     height:100%;
+
     z-index:1;
 
 }
 
 #overlay{
 
-    position:absolute;
+    position:fixed;
+
     inset:0;
 
+    z-index:2;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     flex-direction:column;
 
-    z-index:10;
-
-    padding:8vw;
+    padding:40px;
 
 }
 
 #scene{
 
-    max-width:900px;
+    max-width:950px;
 
     text-align:center;
-
-    transition:
-
-    opacity 1.5s cubic-bezier(.22,1,.36,1),
-
-    transform 1.5s cubic-bezier(.22,1,.36,1),
-
-    filter 1.5s cubic-bezier(.22,1,.36,1);
-
-}
-
-.hero{
 
     font-size:clamp(42px,6vw,88px);
 
     line-height:1.08;
 
-    letter-spacing:-0.06em;
+    letter-spacing:-0.05em;
 
     font-weight:250;
 
-    color:white;
+    opacity:1;
+
+    transition:
+
+    opacity .9s ease,
+
+    transform .9s cubic-bezier(.22,1,.36,1),
+
+    filter .9s ease;
 
     text-shadow:
 
-    0 0 15px rgba(255,255,255,.12),
+    0 0 30px rgba(255,255,255,.06);
 
-    0 0 50px rgba(255,255,255,.08);
+}
+
+.hero{
+
+    animation:fadeUp 1.1s ease forwards;
 
 }
 
 .logo{
 
-    font-size:clamp(70px,9vw,130px);
+    display:flex;
 
-    line-height:1;
+    justify-content:center;
+
+    align-items:center;
+
+    gap:2px;
+
+    font-size:clamp(50px,8vw,110px);
 
     font-weight:700;
 
-    letter-spacing:-0.08em;
-
-    color:white;
+    letter-spacing:-0.06em;
 
     text-shadow:
 
-    0 0 25px rgba(255,255,255,.25),
+    0 0 40px rgba(255,255,255,.15),
 
-    0 0 90px rgba(255,255,255,.16);
+    0 0 80px rgba(255,255,255,.08);
+
+}
+
+.logo span{
+
+    will-change:transform,opacity;
 
 }
 
@@ -116,7 +130,7 @@ body{
 
     position:absolute;
 
-    bottom:42px;
+    bottom:50px;
 
     left:50%;
 
@@ -124,163 +138,51 @@ body{
 
     font-size:12px;
 
-    letter-spacing:.45em;
+    letter-spacing:.35em;
 
     text-transform:uppercase;
 
-    color:white;
+    color:rgba(255,255,255,.75);
 
-    opacity:0;
-
-    transition:opacity 1.5s;
-
-    animation:hint 2.8s infinite;
+    animation:pulse 2.8s ease-in-out infinite;
 
 }
 
-#vignette{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:6;
-
-    pointer-events:none;
-
-    background:
-
-    radial-gradient(circle,transparent 45%,rgba(0,0,0,.35) 72%,rgba(0,0,0,.88) 100%);
-
-}
-
-#grain{
-
-    position:fixed;
-
-    inset:-50%;
-
-    z-index:7;
-
-    pointer-events:none;
-
-    opacity:.045;
-
-    background-image:
-
-    radial-gradient(#ffffff 1px,transparent 1px);
-
-    background-size:4px 4px;
-
-    animation:grain 10s steps(10) infinite;
-
-}
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    width:700px;
-
-    height:700px;
-
-    left:50%;
-
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:
-
-    radial-gradient(circle,
-
-    rgba(255,255,255,var(--pulse)) 0%,
-
-    rgba(255,255,255,.03) 35%,
-
-    transparent 72%);
-
-    filter:blur(80px);
-
-    z-index:2;
-
-    pointer-events:none;
-
-    animation:breathe 12s ease-in-out infinite;
-
-}
-
-@keyframes breathe{
-
-    0%{
-
-        transform:translate(-50%,-50%) scale(.96);
-
-    }
-
-    50%{
-
-        transform:translate(-50%,-50%) scale(1.08);
-
-    }
-
-    100%{
-
-        transform:translate(-50%,-50%) scale(.96);
-
-    }
-
-}
-
-@keyframes grain{
-
-    0%{
-
-        transform:translate(0,0);
-
-    }
-
-    25%{
-
-        transform:translate(-6%,4%);
-
-    }
-
-    50%{
-
-        transform:translate(5%,-4%);
-
-    }
-
-    75%{
-
-        transform:translate(-4%,-6%);
-
-    }
-
-    100%{
-
-        transform:translate(0,0);
-
-    }
-
-}
-
-@keyframes hint{
+@keyframes pulse{
 
     0%,100%{
 
-        opacity:.25;
+        opacity:.35;
 
     }
 
     50%{
 
-        opacity:.75;
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+        filter:blur(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+        filter:blur(0);
 
     }
 
