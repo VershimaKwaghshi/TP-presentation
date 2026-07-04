@@ -2,8 +2,6 @@ export class Waitlist {
 
     constructor() {
 
-        this.button = null;
-
         this.panel = null;
 
         this.built = false;
@@ -17,6 +15,12 @@ export class Waitlist {
         this.built = true;
 
         this.build();
+
+        requestAnimationFrame(() => {
+
+            this.panel.classList.add("show");
+
+        });
 
     }
 
@@ -35,22 +39,58 @@ export class Waitlist {
             </div>
 
             <h1 class="wl-title">
-                Join the Private Waitlist
+                Join The Private Waitlist
             </h1>
 
             <p class="wl-text">
 
-                Take Profit is being released gradually.
-
-                Request an invitation and receive updates as development progresses.
+                Register below to reserve your invitation.
 
             </p>
 
-            <button id="joinButton">
+            <form id="tp-form">
 
-                Request Invitation
+                <input type="text" id="name" placeholder="Full Name" required>
 
-            </button>
+                <input type="text" id="country" placeholder="Country" required>
+
+                <input type="text" id="city" placeholder="Current City" required>
+
+                <input type="email" id="email" placeholder="Email Address" required>
+
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+
+                <button type="submit">
+
+                    Join Waitlist
+
+                </button>
+
+            </form>
+
+            <div id="success" style="display:none">
+
+                <h2>
+
+                    Registration Successful
+
+                </h2>
+
+                <p>
+
+                    Welcome to Take Profit.
+
+                    Join our official community below.
+
+                </p>
+
+                <button id="community">
+
+                    Join WhatsApp Community
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -58,13 +98,25 @@ export class Waitlist {
 
         document.body.appendChild(this.panel);
 
-        this.button = document.getElementById("joinButton");
+        const form = document.getElementById("tp-form");
 
-        this.button.onclick = () => {
+        const success = document.getElementById("success");
+
+        form.addEventListener("submit",(e)=>{
+
+            e.preventDefault();
+
+            form.style.display="none";
+
+            success.style.display="block";
+
+        });
+
+        document.getElementById("community").onclick=()=>{
 
             window.open(
 
-                "https://chat.whatsapp.com/YOUR_WHATSAPP_CHANNEL",
+                "https://whatsapp.com/channel/0029VbAze428aKvO1Nsdfk2a",
 
                 "_blank"
 
