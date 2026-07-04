@@ -2,11 +2,11 @@ export class RhythmEngine {
 
     constructor() {
 
-        this.beat = 0;
-
-        this.tempo = 60;
-
         this.time = 0;
+
+        this.tempo = 40;
+
+        this.pulse = 0;
 
         this.subscribers = [];
 
@@ -18,10 +18,9 @@ export class RhythmEngine {
 
     }
 
-    unsubscribe(callback) {
+    setTempo(value) {
 
-        this.subscribers =
-            this.subscribers.filter(item => item !== callback);
+        this.tempo = value;
 
     }
 
@@ -29,50 +28,21 @@ export class RhythmEngine {
 
         this.time += delta;
 
-        this.beat += delta * (this.tempo / 60);
+        const speed = this.tempo / 60;
 
-        const pulse =
-            (Math.sin(this.beat * Math.PI * 2) + 1) * 0.5;
+        this.pulse += delta * speed;
 
-        for (const callback of this.subscribers) {
+        const state = {
 
-            callback({
+            time: this.time,
 
-                delta,
+            pulse: (Math.sin(this.pulse * Math.PI * 2) + 1) * 0.5,
 
-                beat: this.beat,
+            tempo: this.tempo
 
-                pulse,
+        };
 
-                tempo: this.tempo,
-
-                time: this.time
-
-            });
-
-        }
-
-    }
-
-    setTempo(value) {
-
-        this.tempo = value;
-
-    }
-
-    pause() {
-
-        this.tempo = 0;
-
-    }
-
-    resume() {
-
-        if (this.tempo === 0) {
-
-            this.tempo = 60;
-
-        }
+        this.subscribers.forEach(callback => callback(state));
 
     }
 
