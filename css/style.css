@@ -1,1 +1,5 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; overflow: hidden; }
+#experience-canvas-container { position: fixed; inset: 0; z-index: 1; }
+#ui-layer { position: fixed; inset: 0; z-index: 2; pointer-events: none; display: flex; align-items: center; justify-content: center; }
 
