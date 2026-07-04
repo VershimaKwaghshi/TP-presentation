@@ -3,61 +3,72 @@ export class World {
     constructor() {
 
         this.canvas = document.getElementById("world");
+        this.ctx = this.canvas.getContext("2d");
+
         this.scene = document.getElementById("scene");
+
         this.audio = document.getElementById("ambient");
 
         this.current = 0;
 
+        this.resize();
+
+        window.addEventListener("resize", () => this.resize());
+
+        this.particles = [];
+
+        for (let i = 0; i < 120; i++) {
+
+            this.particles.push({
+
+                x: Math.random() * this.width,
+                y: Math.random() * this.height,
+
+                r: Math.random() * 2 + 0.4,
+
+                vx: (Math.random() - 0.5) * 0.12,
+
+                vy: (Math.random() - 0.5) * 0.12,
+
+                a: Math.random() * 0.35 + 0.03
+
+            });
+
+        }
+
+        this.time = 0;
+
         this.script = [
 
-            {
-                text: "Every day.",
-                class: "hero"
-            },
+            "Every day.",
 
-            {
-                text: "Someone discovers trading.",
-                class: "hero"
-            },
+            "Someone discovers trading.",
 
-            {
-                text: "People dream.",
-                class: "hero"
-            },
+            "People dream.",
 
-            {
-                text: "Millions enter the market with hope.",
-                class: "hero"
-            },
+            "Millions enter the market with hope.",
 
-            {
-                text: "Most never return.",
-                class: "hero"
-            },
+            "Most never return.",
 
-            {
-                text: "Not because they lack intelligence.",
-                class: "hero"
-            },
+            "Not because they lack intelligence.",
 
-            {
-                text: "Because no human was built to remain rational under financial pressure.",
-                class: "hero"
-            },
+            "Because no human was built to remain rational under financial pressure.",
 
-            {
-                text: "What if emotion never touched capital?",
-                class: "hero"
-            },
+            "What if emotion never touched capital?",
 
-            {
-                text: "TAKE PROFIT",
-                class: "logo"
-            }
+            "<span class='logo'>TAKE&nbsp;PROFIT</span>"
 
         ];
 
-        this.lock = false;
+    }
+
+    resize() {
+
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
 
     }
 
@@ -67,9 +78,7 @@ export class World {
 
         document.body.addEventListener("pointerdown", () => {
 
-            if (this.lock) return;
-
-            if (this.audio && this.audio.paused) {
+            if (this.audio.paused) {
 
                 this.audio.play().catch(() => {});
 
@@ -83,45 +92,25 @@ export class World {
 
     showScene() {
 
-        this.lock = true;
-
-        this.scene.style.opacity = "0";
-        this.scene.style.transform = "translateY(40px) scale(.98)";
-        this.scene.style.filter = "blur(12px)";
+        this.scene.style.opacity = 0;
+        this.scene.style.transform = "translateY(35px) scale(.985)";
+        this.scene.style.filter = "blur(10px)";
 
         setTimeout(() => {
 
-            const item = this.script[this.current];
+            this.scene.innerHTML = this.script[this.current];
 
-            this.scene.className = item.class;
+            this.scene.style.opacity = 1;
+            this.scene.style.transform = "translateY(0px) scale(1)";
+            this.scene.style.filter = "blur(0px)";
 
-            this.scene.innerHTML = item.text;
-
-            requestAnimationFrame(() => {
-
-                this.scene.style.opacity = "1";
-                this.scene.style.transform = "translateY(0) scale(1)";
-                this.scene.style.filter = "blur(0px)";
-
-            });
-
-        }, 350);
-
-        setTimeout(() => {
-
-            this.lock = false;
-
-        }, 1600);
+        }, 500);
 
     }
 
     next() {
 
-        if (this.current >= this.script.length - 1) {
-
-            return;
-
-        }
+        if (this.current >= this.script.length - 1) return;
 
         this.current++;
 
@@ -131,10 +120,51 @@ export class World {
 
     update(delta) {
 
-        const t = performance.now() * 0.00008;
+        this.time += delta;
 
-        document.body.style.backgroundPosition =
-            `${Math.sin(t) * 20}px ${Math.cos(t) * 20}px`;
+        const ctx = this.ctx;
+
+        ctx.clearRect(0, 0, this.width, this.height);
+
+        const glow = ctx.createRadialGradient(
+
+            this.width / 2 + Math.sin(this.time * 0.25) * 120,
+            this.height / 2 + Math.cos(this.time * 0.2) * 60,
+            0,
+
+            this.width / 2,
+            this.height / 2,
+            this.width * 0.6
+
+        );
+
+        glow.addColorStop(0, "rgba(255,255,255,.06)");
+        glow.addColorStop(.35, "rgba(255,255,255,.025)");
+        glow.addColorStop(1, "rgba(0,0,0,0)");
+
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, this.width, this.height);
+
+        for (const p of this.particles) {
+
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < 0) p.x = this.width;
+            if (p.x > this.width) p.x = 0;
+
+            if (p.y < 0) p.y = this.height;
+            if (p.y > this.height) p.y = 0;
+
+            ctx.beginPath();
+
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+
+            ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+
+            ctx.fill();
+
+        }
 
     }
 
