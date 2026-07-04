@@ -1,43 +1,20 @@
-import * as THREE from 'three';
-import { World } from './render/world.js';
-import { Director } from './director.js';
-import { RhythmEngine } from './rhythm.js';
+import { Engine } from "./engine.js";
 
 class App {
 
     constructor() {
 
-        this.clock = new THREE.Clock();
+        this.engine = new Engine();
 
-        this.world = new World();
+        this.lastFrame = performance.now();
 
-        this.rhythm = new RhythmEngine();
-
-        this.director = new Director(
-            this.world,
-            this.rhythm
-        );
-
-        this.bindRhythm();
+        this.engine.start();
 
         this.animate();
 
-    }
+        document.body.addEventListener("pointerdown", () => {
 
-    bindRhythm() {
-
-        this.rhythm.subscribe((state) => {
-
-            document.body.style.backgroundPosition =
-                `${Math.sin(state.time * 0.2) * 30}px ${Math.cos(state.time * 0.15) * 30}px`;
-
-            const glow =
-                0.12 + state.pulse * 0.08;
-
-            document.documentElement.style.setProperty(
-                "--pulse",
-                glow
-            );
+            this.engine.next();
 
         });
 
@@ -45,24 +22,18 @@ class App {
 
     animate() {
 
+        const now = performance.now();
+
+        const delta = (now - this.lastFrame) / 1000;
+
+        this.lastFrame = now;
+
+        this.engine.update(delta);
+
         requestAnimationFrame(() => this.animate());
-
-        const delta = this.clock.getDelta();
-
-        this.rhythm.update(delta);
-
-        this.director.update(delta);
-
-        this.world.update(delta);
-
-        this.world.render();
 
     }
 
 }
 
-window.addEventListener("load", () => {
-
-    new App();
-
-});
+new App();
