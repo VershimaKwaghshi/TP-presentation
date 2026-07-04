@@ -1,51 +1,77 @@
-export class World{
+export class World {
 
-    constructor(){
+    constructor() {
 
-        this.canvas =
-        document.getElementById("world");
-
-        this.scene =
-        document.getElementById("scene");
-
-        this.audio =
-        document.getElementById("ambient");
+        this.canvas = document.getElementById("world");
+        this.scene = document.getElementById("scene");
+        this.audio = document.getElementById("ambient");
 
         this.current = 0;
 
-        this.script=[
+        this.script = [
 
-            "Every day.",
+            {
+                text: "Every day.",
+                class: "hero"
+            },
 
-            "Someone discovers trading.",
+            {
+                text: "Someone discovers trading.",
+                class: "hero"
+            },
 
-            "People dream.",
+            {
+                text: "People dream.",
+                class: "hero"
+            },
 
-            "Millions enter the market with hope.",
+            {
+                text: "Millions enter the market with hope.",
+                class: "hero"
+            },
 
-            "Most never return.",
+            {
+                text: "Most never return.",
+                class: "hero"
+            },
 
-            "Not because they lack intelligence.",
+            {
+                text: "Not because they lack intelligence.",
+                class: "hero"
+            },
 
-            "Because no human was built to remain rational under financial pressure.",
+            {
+                text: "Because no human was built to remain rational under financial pressure.",
+                class: "hero"
+            },
 
-            "What if emotion never touched capital?",
+            {
+                text: "What if emotion never touched capital?",
+                class: "hero"
+            },
 
-            "TAKE PROFIT"
+            {
+                text: "TAKE PROFIT",
+                class: "logo"
+            }
 
         ];
 
+        this.lock = false;
+
     }
 
-    start(){
+    start() {
 
         this.showScene();
 
-        document.body.addEventListener("click",()=>{
+        document.body.addEventListener("pointerdown", () => {
 
-            if(this.audio.paused){
+            if (this.lock) return;
 
-                this.audio.play().catch(()=>{});
+            if (this.audio && this.audio.paused) {
+
+                this.audio.play().catch(() => {});
 
             }
 
@@ -55,23 +81,43 @@ export class World{
 
     }
 
-    showScene(){
+    showScene() {
 
-        this.scene.style.opacity=0;
+        this.lock = true;
 
-        setTimeout(()=>{
+        this.scene.style.opacity = "0";
+        this.scene.style.transform = "translateY(40px) scale(.98)";
+        this.scene.style.filter = "blur(12px)";
 
-            this.scene.innerHTML=this.script[this.current];
+        setTimeout(() => {
 
-            this.scene.style.opacity=1;
+            const item = this.script[this.current];
 
-        },400);
+            this.scene.className = item.class;
+
+            this.scene.innerHTML = item.text;
+
+            requestAnimationFrame(() => {
+
+                this.scene.style.opacity = "1";
+                this.scene.style.transform = "translateY(0) scale(1)";
+                this.scene.style.filter = "blur(0px)";
+
+            });
+
+        }, 350);
+
+        setTimeout(() => {
+
+            this.lock = false;
+
+        }, 1600);
 
     }
 
-    next(){
+    next() {
 
-        if(this.current>=this.script.length-1){
+        if (this.current >= this.script.length - 1) {
 
             return;
 
@@ -80,6 +126,19 @@ export class World{
         this.current++;
 
         this.showScene();
+
+    }
+
+    update(delta) {
+
+        const t = performance.now() * 0.00008;
+
+        document.body.style.backgroundPosition =
+            `${Math.sin(t) * 20}px ${Math.cos(t) * 20}px`;
+
+    }
+
+    render() {
 
     }
 
