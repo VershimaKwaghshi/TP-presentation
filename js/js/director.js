@@ -1,24 +1,136 @@
-Dear Axi Partnerships Team,
+export class Director {
 
-My name is Dr. Vershima Kwaghshi.
+    constructor(world, rhythm) {
 
-I am the founder of Take Profit (TP), a platform designed to address two persistent challenges facing brokerage firms:
+        this.world = world;
 
-• Customer acquisition
-• Long-term trader retention
+        this.rhythm = rhythm;
 
-Our model is also designed to reduce permanent trader losses, creating stronger incentives for traders to remain active while generating sustainable trading volume for partner brokers.
+        this.started = false;
 
-We believe this approach could create meaningful commercial value for Axi, and I would appreciate the opportunity to present the partnership model to the appropriate member of your team.
+        this.lastScene = -1;
 
-Please let me know a convenient time for a brief introductory meeting or who I should speak with directly.
+        this.tempo = [
 
-Kind regards,
+            40,
 
-Dr. Vershima Kwaghshi
+            42,
 
-Founder, Take Profit
+            44,
 
-Phone:
+            46,
 
-Location: Nigeria
+            48,
+
+            42,
+
+            36,
+
+            28,
+
+            0
+
+        ];
+
+    }
+
+    update(delta) {
+
+        if (!this.started) {
+
+            this.started = true;
+
+            this.world.start();
+
+        }
+
+        if (this.world.current !== this.lastScene) {
+
+            this.lastScene = this.world.current;
+
+            this.rhythm.setTempo(
+
+                this.tempo[this.world.current] || 60
+
+            );
+
+            this.applyMood();
+
+        }
+
+    }
+
+    applyMood() {
+
+        const body = document.body;
+
+        switch (this.world.current) {
+
+            case 0:
+
+                body.style.background =
+                "radial-gradient(circle,#171717 0%,#080808 45%,#000 100%)";
+
+                break;
+
+            case 1:
+
+                body.style.background =
+                "radial-gradient(circle,#151515 0%,#070707 45%,#000 100%)";
+
+                break;
+
+            case 2:
+
+                body.style.background =
+                "radial-gradient(circle,#131313 0%,#060606 45%,#000 100%)";
+
+                break;
+
+            case 3:
+
+                body.style.background =
+                "radial-gradient(circle,#101010 0%,#050505 45%,#000 100%)";
+
+                break;
+
+            case 4:
+
+                body.style.background =
+                "radial-gradient(circle,#0d0d0d 0%,#040404 45%,#000 100%)";
+
+                break;
+
+            case 5:
+
+                body.style.background =
+                "radial-gradient(circle,#090909 0%,#030303 45%,#000 100%)";
+
+                break;
+
+            case 6:
+
+                body.style.background =
+                "radial-gradient(circle,#050505 0%,#010101 45%,#000 100%)";
+
+                break;
+
+            case 7:
+
+                body.style.background =
+                "radial-gradient(circle,#111111 0%,#040404 45%,#000 100%)";
+
+                break;
+
+            case 8:
+
+                body.style.background =
+                "radial-gradient(circle,#202020 0%,#070707 45%,#000 100%)";
+
+                break;
+
+        }
+
+    }
+
+}
