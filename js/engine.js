@@ -1,11 +1,14 @@
 import { Timeline } from "./timeline.js";
 import { Typography } from "./typography.js";
+import { AudioEngine } from "./audio.js";
 
 export class Engine {
 
     constructor() {
 
         this.typography = new Typography();
+
+        this.audio = new AudioEngine();
 
         this.timeline = Timeline;
 
@@ -17,6 +20,10 @@ export class Engine {
 
     start() {
 
+        this.audio.start();
+
+        this.audio.chapterOne();
+
         this.running = true;
 
         this.play();
@@ -25,20 +32,13 @@ export class Engine {
 
     play() {
 
-        if (this.current >= this.timeline.length) {
-
-            return;
-
-        }
+        if (this.current >= this.timeline.length) return;
 
         const moment = this.timeline[this.current];
 
         this.typography.show(
-
             moment.text,
-
             moment.actor
-
         );
 
     }
@@ -54,6 +54,8 @@ export class Engine {
     }
 
     update(delta) {
+
+        this.audio.update(delta);
 
     }
 
